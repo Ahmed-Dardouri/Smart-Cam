@@ -1,7 +1,6 @@
 import tkinter as tk
-
 import os
-
+from PIL import Image, ImageTk
 
 
 root = tk.Tk()
@@ -11,15 +10,24 @@ def alg2():
    print("algorithme 2")
 def alg3():
    print("algorithme 3")
-canvas = tk.Canvas(root,height = 250,width = 500)
+root.title("Smart-Cam GUI")
+canvas = tk.Canvas(root,height = 400,width = 530)
 canvas.pack()
-frame = tk.Frame(root,bg = "#a6c8ff")
-frame.place(relwidth = 1,relheight=1)
-button1 = tk.Button(frame, text ="algo1", command = alg1)
-button1.place(relx = 0.1,rely = 0.1,relwidth = 0.2,relheight = 0.5)
-button2 = tk.Button(frame, text ="algo2", command = alg2)
-button2.place(relx = 0.4,rely = 0.1,relwidth = 0.2,relheight = 0.5)
-button3 = tk.Button(frame, text ="algo3", command = alg3)
-button3.place(relx = 0.7,rely = 0.1,relwidth = 0.2,relheight = 0.5)
+
+bgimg = Image.open('are.png')
+img = ImageTk.PhotoImage(bgimg)
+bglabel = tk.Label(root, image = img)
+bglabel.place(relwidth = 1,relheight = 1)
+
+
+
+frame = tk.Frame(root, bg ="#1d1c18")
+frame.place(relx = 0.1, rely = 0.65,relwidth = 0.8,relheight=0.3)
+button1 = tk.Button(frame, text ="Face Recognition", command = alg1, bg = "#1d1c18", fg = "#ffd148")
+button1.place(relx = 0.025,rely = 0.1,relwidth = 0.3,relheight = 0.5)
+button2 = tk.Button(frame, text ="Mask Detection", command = alg2, bg = "#1d1c18", fg = "#ffd148")
+button2.place(relx = 0.35,rely = 0.1,relwidth = 0.3,relheight = 0.5)
+button3 = tk.Button(frame, text ="Door State", command = alg3 , bg = "#1d1c18", fg = "#ffd148")
+button3.place(relx = 0.675,rely = 0.1,relwidth = 0.3,relheight = 0.5)
 
 root.mainloop()
